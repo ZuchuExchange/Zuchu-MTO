@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Offer Selection</title>
+<style>
+  body {
+    background-image: url('zuchu1.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .alert {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: none;
+    z-index: 9999;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff; /* optional, for contrast */
+  }
+
+  /* Headline style */
+  .headline {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  /* Description style */
+  .description {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  /* Selection container styling */
+  .selection-container {
+    background-color: rgba(255, 255, 255, 0.5); /* 90% transparent, 10% white */
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column; /* arrange options vertically */
+    gap: 10px;
+  }
+
+  /* Form styling to remove default spacing */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Label styling for radio options */
+  label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
+
+  /* Radio button spacing */
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+
+  /* Submit button styling */
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: #555;
+  }
+</style>
+</head>
+<body>
+
+<div class="alert" id="alert">Chagua Moja Kwenye Orodha</div>
+
+<div class="container">
+  <div class="headline">ADA YA MITANDAO</div>
+  <div class="description">Hii Ni Ada Unayotakiwa Kulipia Kulingana Na Mtandao Wako Maana Ada Ya Makato(Transaction Fees) Ni Tofauti Kwa Mitandao Zote </div>
+  <div class="selection-container">
+    <form id="offerForm">
+      <label><input type="radio" name="offer" value="4000"> Vodacom - 4000</label>
+      <label><input type="radio" name="offer" value="4100"> Airtel - 4100</label>
+      <label><input type="radio" name="offer" value="4200"> Tigo - 4200</label>
+      <label><input type="radio" name="offer" value="4300"> Halotel - 4300</label>
+      <button type="submit">Ingiza</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('offerForm');
+  const alertBox = document.getElementById('alert');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const selectedOption = document.querySelector('input[name="offer"]:checked');
+
+    if (!selectedOption) {
+      // Show alert
+      alertBox.style.display = 'block';
+      setTimeout(() => {
+        alertBox.style.display = 'none';
+      }, 2000);
+    } else {
+      // Redirect to index2.html with amount as query parameter
+      const amount = encodeURIComponent(selectedOption.value);
+      window.location.href = `Document6.html?amount=${amount}`;
+    }
+  });
+</script>
+
+</body>
+</html>
